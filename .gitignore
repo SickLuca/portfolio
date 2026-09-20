@@ -36,6 +36,10 @@ yarn-error.log*
 # vercel
 .vercel
 
+# local working files (CV build scaffolding + editor/session tooling)
+/cv
+/.claude
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
