@@ -19,8 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-// TODO: update to the final domain after deploying to Vercel.
-const SITE_URL = "https://luca-repupilli.vercel.app";
+const SITE_URL = "https://lucarepupilli.com";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
