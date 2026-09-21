@@ -13,12 +13,52 @@ const links = [
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [active, setActive] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Scroll-spy: highlight the nav link for the section currently being read.
+  // A section becomes active once its top passes an activation line ~35% down
+  // the viewport. Two edge cases are handled explicitly: above the first
+  // section (the hero) nothing is highlighted, and once the page is scrolled
+  // to the bottom the last section wins even if it is too short to reach the
+  // line.
+  useEffect(() => {
+    const ids = links.map((l) => l.href.slice(1));
+
+    const update = () => {
+      const scrollY = window.scrollY;
+      const atBottom =
+        window.innerHeight + scrollY >=
+        document.documentElement.scrollHeight - 2;
+      if (atBottom) {
+        setActive(ids[ids.length - 1]);
+        return;
+      }
+
+      const line = scrollY + window.innerHeight * 0.35;
+      let current = "";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const top = el.getBoundingClientRect().top + scrollY;
+        if (top <= line) current = id;
+      }
+      setActive(current);
+    };
+
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
   }, []);
 
   return (
@@ -32,20 +72,28 @@ export default function Nav() {
           href="#top"
           className="font-mono text-sm font-medium tracking-tight text-navy"
         >
-          luca_repupilli
+          lucarepupilli.com
         </a>
 
         {/* desktop links */}
         <div className="hidden items-center gap-8 md:flex">
-          {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm text-ink/80 transition-colors hover:text-accent"
-            >
-              {l.label}
-            </a>
-          ))}
+          {links.map((l) => {
+            const isActive = active === l.href.slice(1);
+            return (
+              <a
+                key={l.href}
+                href={l.href}
+                aria-current={isActive ? "true" : undefined}
+                className={`text-sm transition-colors ${
+                  isActive
+                    ? "font-medium text-accent"
+                    : "text-ink/80 hover:text-accent"
+                }`}
+              >
+                {l.label}
+              </a>
+            );
+          })}
           <a
             href="/Luca_Repupilli_CV.pdf"
             target="_blank"
@@ -84,16 +132,24 @@ export default function Nav() {
       {open && (
         <div className="border-t border-line bg-bg/95 backdrop-blur md:hidden">
           <div className="wrap flex flex-col py-3">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="py-2 text-sm text-ink/80 transition-colors hover:text-accent"
-              >
-                {l.label}
-              </a>
-            ))}
+            {links.map((l) => {
+              const isActive = active === l.href.slice(1);
+              return (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`py-2 text-sm transition-colors ${
+                    isActive
+                      ? "font-medium text-accent"
+                      : "text-ink/80 hover:text-accent"
+                  }`}
+                >
+                  {l.label}
+                </a>
+              );
+            })}
             <a
               href="/Luca_Repupilli_CV.pdf"
               target="_blank"

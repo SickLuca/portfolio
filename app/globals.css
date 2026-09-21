@@ -60,3 +60,29 @@ body {
 .animate-rise-delay {
   animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
 }
+
+/* orbiting skills constellation */
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.orbit-scope {
+  container-type: inline-size;
+}
+
+.orbit-spin {
+  animation: orbit var(--orbit-dur, 60s) linear infinite;
+  animation-direction: var(--orbit-dir, normal);
+}
+
+.orbit-scope[data-paused="true"] .orbit-spin {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .orbit-spin {
+    animation: none;
+  }
+}

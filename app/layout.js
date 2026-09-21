@@ -1,4 +1,6 @@
 import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -48,6 +50,7 @@ export const metadata = {
   ],
   authors: [{ name: "Luca Repupilli", url: SITE_URL }],
   creator: "Luca Repupilli",
+  alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
@@ -117,6 +120,8 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );

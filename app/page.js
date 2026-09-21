@@ -7,6 +7,7 @@ import Education from "./components/Education";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import BackToTop from "./components/BackToTop";
 import Reveal from "./components/Reveal";
 
 export default function Home() {
@@ -15,12 +16,8 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <Reveal>
-          <Projects />
-        </Reveal>
-        <Reveal>
-          <Stack />
-        </Reveal>
+        <Projects />
+        <Stack />
         <Reveal>
           <Experience />
         </Reveal>
@@ -35,6 +32,7 @@ export default function Home() {
         </Reveal>
       </main>
       <Footer />
+      <BackToTop />
     </>
   );
 }

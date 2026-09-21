@@ -1,3 +1,5 @@
+import Reveal from "./Reveal";
+
 // Data-driven "Selected Work" section.
 // To add or edit a project, just change this array — the layout updates itself.
 const projects = [
@@ -58,7 +60,7 @@ const projects = [
     note: null,
   },
   {
-    title: "ArduinoAlarmControlUnit",
+    title: "AlarmControlUnit",
     context: "Embedded Alarm System · UNICAM",
     bullets: [
       "Designed an alarm control unit using a finite-state-machine architecture and interrupt-driven programming with direct register manipulation for low-level hardware control (simulated on the Wokwi platform).",
@@ -72,13 +74,13 @@ const projects = [
 function ProjectRow({ project, index }) {
   const number = String(index + 1).padStart(2, "0");
   return (
-    <article className="border-t border-line py-10 md:py-12">
-      <div className="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] md:gap-12">
+    <article className="group border-t border-line py-10 md:py-12">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)] md:gap-12">
         {/* left: number, title, context, link */}
         <div>
           <div className="flex items-baseline gap-4">
             <span className="font-mono text-sm text-accent">{number}</span>
-            <h3 className="font-display text-2xl font-semibold tracking-tight text-navy md:text-3xl">
+            <h3 className="min-w-0 break-words font-display text-2xl font-semibold tracking-tight text-navy transition-colors group-hover:text-accent md:text-3xl">
               {project.title}
             </h3>
           </div>
@@ -131,20 +133,30 @@ export default function Projects() {
   return (
     <section id="work" className="border-t border-line">
       <div className="wrap py-20 md:py-28">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-          Selected Work
-        </p>
-        <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-navy md:text-4xl">
-          Projects
-        </h2>
-        <p className="mt-3 max-w-2xl text-ink/70">
-          A selection of projects, from a multi-agent LLM thesis to REST backends
-          and automation workflows.
-        </p>
+        <Reveal>
+          <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+            Selected Work
+          </p>
+          <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight text-navy md:text-4xl">
+            Projects
+          </h2>
+          <p className="mt-3 max-w-2xl text-ink/70">
+            A selection of projects, from a multi-agent LLM thesis to REST backends
+            and automation workflows.
+          </p>
+        </Reveal>
 
         <div className="mt-10">
           {projects.map((project, index) => (
-            <ProjectRow key={project.title} project={project} index={index} />
+            <Reveal
+              key={project.title}
+              delay={Math.min(index, 4) * 0.07}
+              y={28}
+              blur={0}
+              duration={0.6}
+            >
+              <ProjectRow project={project} index={index} />
+            </Reveal>
           ))}
         </div>
       </div>

@@ -1,9 +1,32 @@
 import Image from "next/image";
+import AvailabilityBadge from "./AvailabilityBadge";
+import Topography from "./Topography";
 
 export default function Hero() {
   return (
     <section id="top" className="relative overflow-hidden">
-      <div className="wrap grid items-center gap-12 pt-32 pb-20 md:grid-cols-[1.2fr_0.8fr] md:pt-40 md:pb-28">
+      <div className="absolute inset-0" aria-hidden="true">
+        <Topography
+          colorMode="uniform"
+          lowColor="#1f3350"
+          midColor="#1f3350"
+          highColor="#1f3350"
+          speed={0.25}
+          morphAmount={3}
+          morphSpeed={0.05}
+          bands={2}
+          thickness={0.012}
+          scale={1.6}
+          glow={0}
+          grain={false}
+          opacity={0.5}
+          contrast={3}
+          mouseInteraction
+          mouseRadius={0.3}
+          mouseStrength={0.4}
+        />
+      </div>
+      <div className="wrap relative z-10 grid items-center gap-12 pt-32 pb-20 md:grid-cols-[1.2fr_0.8fr] md:pt-40 md:pb-28">
         {/* left: intro */}
         <div className="animate-rise">
           <p className="mb-5 font-mono text-xs uppercase tracking-[0.2em] text-accent">
@@ -39,6 +62,9 @@ export default function Hero() {
             >
               Get in touch
             </a>
+          </div>
+          <div className="mt-8">
+            <AvailabilityBadge />
           </div>
         </div>
 

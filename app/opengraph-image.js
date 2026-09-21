@@ -27,7 +27,7 @@ export default function OpengraphImage() {
             letterSpacing: 4,
           }}
         >
-          {"SOFTWARE ENGINEER  ·  AI & AGENTIC SYSTEMS"}
+          {"SOFTWARE ENGINEER"}
         </div>
         <div
           style={{

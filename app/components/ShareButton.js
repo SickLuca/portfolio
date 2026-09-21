@@ -10,7 +10,7 @@ export default function ShareButton() {
     const url = typeof window !== "undefined" ? window.location.href : "";
     const shareData = {
       title: "Luca Repupilli - Software Engineer",
-      text: "Luca Repupilli - Software Engineer (AI & agentic systems)",
+      text: "Luca Repupilli - Software Engineer & aspiring AI engineer",
       url,
     };
 
