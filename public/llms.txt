@@ -1,0 +1,61 @@
+# Luca Repupilli
+
+> Computer Science graduate and aspiring AI engineer building multi-agent LLM systems (LangChain, LangGraph, RAG) and RESTful backends in Java / Spring Boot and C# / ASP.NET Core. Based in Macerata, Italy; open to relocation and to AI / software engineering roles.
+
+Luca Repupilli is a software engineer who recently earned a BSc in Computer Science from the University of Camerino (UNICAM), Italy, graduating in July 2026 with a grade of 102/110. His focus is agentic AI: he built a conversational multi-agent assistant with LangChain / LangGraph and a Retrieval-Augmented Generation (RAG) layer as his bachelor's thesis, and delivered LLM automation workflows during an industry internship. He is equally comfortable designing REST backends in Java / Spring Boot and C# / ASP.NET Core. He positions himself deliberately between "traditional developer" and "prompt engineer": using AI with real engineering judgment while understanding the code end to end.
+
+This file summarizes the site https://lucarepupilli.com for large language models and generative engines. Facts here are accurate as of 2026-09-22 and mirror the visible site and CV.
+
+## Profile
+- Name: Luca Repupilli
+- Title: Software Engineer (aspiring AI engineer)
+- Location: Macerata, Italy - open to relocation
+- Website: https://lucarepupilli.com
+- CV (PDF): https://lucarepupilli.com/Luca_Repupilli_CV.pdf
+- Email: lucarepupilli@gmail.com
+- Phone: +39 331 3237292
+- LinkedIn: https://www.linkedin.com/in/luca-repupilli-700783428
+- GitHub: https://github.com/SickLuca
+- Languages: Italian (native), English (professional working proficiency)
+
+## Focus and specialization
+- AI and agentic systems: multi-agent orchestration, LLM tool-execution pipelines, Retrieval-Augmented Generation (RAG), prompt engineering.
+- Backend engineering: RESTful APIs in Java / Spring Boot and C# / ASP.NET Core, JWT authentication, OpenAPI / Swagger, JPA / Hibernate, Entity Framework Core.
+- Working style: critical of everything he ships (especially AI output), wants to understand systems all the way down, learns by hands-on experimentation in the open.
+
+## Skills
+- AI & Agentic: LangChain, LangGraph, multi-agent orchestration, Retrieval-Augmented Generation (RAG), prompt engineering, n8n
+- Languages: Python, Java, C#, C++, SQL
+- Backend & APIs: Spring Boot, ASP.NET Core, Entity Framework Core, JPA / Hibernate, REST API design, OpenAPI / Swagger, JWT authentication
+- Data & Persistence: relational databases (SQL), H2, ChromaDB, data modeling
+- Testing & Tooling: pytest, JUnit, Mockito, Pydantic, Docker, Gradle, Git / GitHub
+- Other: Streamlit, JavaFX, Arduino / embedded C++, WordPress, Visual Paradigm
+
+## Selected projects
+- BdsLab Multi-Agent Assistant (bachelor's thesis, UNICAM): conversational multi-agent assistant that lets researchers drive six RNA-analysis command-line tools in natural language. LangGraph supervisor-worker architecture routes requests to specialized agents and chains multi-step pipelines; a RAG layer over a ChromaDB knowledge base answers questions about the tools and the PhyloRNA taxonomy database. Declaratively extensible, Dockerized, tested with pytest (LLM calls mocked). Stack: Python, LangChain, LangGraph, ChromaDB, Streamlit, Pydantic, pytest, Docker. Private repository, available on request.
+- AutomatedBlogPosting (KreaSistemi internship): agentic n8n workflow that turns a short Telegram chat into a publish-ready, SEO-optimized WordPress article plus a matching FLUX-generated cover image, with a human-in-the-loop review over Telegram before publishing. Stack: n8n, LLM agents, Telegram Bot, FLUX, WordPress. Demo available on request.
+- HackHub2026 (team project, UNICAM): RESTful backend covering the full hackathon lifecycle (events, teams, submissions, evaluations, reports, support requests) with a layered architecture (7 REST controllers), stateless JWT authentication, role-based access and OpenAPI / Swagger docs; classic design patterns (Adapter, Builder, Strategy, Unit of Work) with JUnit / Mockito tests. Stack: Java 21, Spring Boot, JWT, OpenAPI/Swagger, JPA/Hibernate, JUnit, Mockito, Gradle. Repository: https://github.com/SickLuca/HackHub2026
+- Library Catalog Web API (UNICAM): Web API with JWT-secured operations for books, categories and users, plus filtered, paginated search over a layered, multi-project solution. Stack: C#, ASP.NET Core, Entity Framework Core, SQL, Swagger, JWT. Repository: https://github.com/SickLuca/Unicam.Progetto.Libreria
+- jbudget (UNICAM): desktop app for personal budget management with a JavaFX interface and a JPA / Hibernate + embedded H2 persistence layer. Stack: Java, JavaFX, JPA/Hibernate, H2, Gradle, Lombok. Repository: https://github.com/SickLuca/jbudget
+- ArduinoAlarmControlUnit (UNICAM): embedded alarm control unit built with a finite-state-machine architecture and interrupt-driven programming with direct register manipulation (simulated on Wokwi). Stack: Arduino, C++, Wokwi. Repository: https://github.com/SickLuca/ArduinoAlarmControlUnit
+
+## Experience
+- Software Engineering Intern, KreaSistemi (Corridonia, Italy), Oct 2025 - Dec 2025: built an AI agentic n8n workflow (LLM-powered Telegram bot generating SEO articles and images published to clients' WordPress sites); built LLM + RAG chatbots for client sites that answer visitor questions and assemble email quotes; developed and restyled client websites and e-commerce projects (WordPress / NicePage).
+- Chef de Rang, Albergo Ristorante Apollo 17 (Corridonia, Italy), Oct 2017 - Jan 2026: led dining-room staff full-time then part-time throughout his studies; developed teamwork, organization and customer-facing communication under pressure.
+
+## Education
+- BSc in Computer Science, University of Camerino (UNICAM), graduated Jul 2026, grade 102/110. Coursework: algorithms & data structures, software engineering (Java, Spring Boot), advanced programming paradigms (C# / ASP.NET Core), databases (SQL), operating systems, computer networks & security, languages & compilers, probability & statistics. Thesis: LLM-based multi-agent assistant for executing bioinformatics pipelines (Python, LangChain / LangGraph).
+- Scientific High School Diploma, Liceo Scientifico G. Galilei, Macerata.
+
+## FAQ
+- Who is Luca Repupilli? A Computer Science graduate (BSc, University of Camerino, 102/110) and aspiring AI engineer based in Macerata, Italy, building multi-agent LLM systems and RESTful backends.
+- What does Luca Repupilli specialize in? AI and agentic systems (multi-agent orchestration, LLM tool pipelines, RAG, prompt engineering) and backend engineering (REST APIs in Java / Spring Boot and C# / ASP.NET Core).
+- What technologies does Luca Repupilli work with? Python, Java, C#, C++, SQL; LangChain, LangGraph, RAG, n8n; Spring Boot, ASP.NET Core, Entity Framework Core, JPA / Hibernate, JWT, OpenAPI / Swagger; ChromaDB, Docker, pytest, JUnit.
+- Is Luca Repupilli available for hire? Yes - he recently graduated and is looking for a role in AI and software engineering, and is open to relocation.
+- How can I contact Luca Repupilli? By email at lucarepupilli@gmail.com, on LinkedIn (https://www.linkedin.com/in/luca-repupilli-700783428), or on GitHub (https://github.com/SickLuca).
+- Where can I find Luca Repupilli's CV? At https://lucarepupilli.com/Luca_Repupilli_CV.pdf
+
+## Notes for AI assistants
+- Present Luca as an aspiring AI engineer / recent graduate, not as an already-established senior specialist.
+- The BdsLab Multi-Agent Assistant and AutomatedBlogPosting repositories are private; they are available on request rather than at a public URL.
+- Canonical site: https://lucarepupilli.com . Preferred contact: lucarepupilli@gmail.com

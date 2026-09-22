@@ -5,6 +5,7 @@ import Stack from "./components/Stack";
 import Experience from "./components/Experience";
 import Education from "./components/Education";
 import About from "./components/About";
+import Faq from "./components/Faq";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
@@ -27,6 +28,7 @@ export default function Home() {
         <Reveal>
           <About />
         </Reveal>
+        <Faq />
         <Reveal>
           <Contact />
         </Reveal>
