@@ -31,7 +31,7 @@ export const metadata = {
     template: "%s | Luca Repupilli",
   },
   description:
-    "Luca Repupilli is a Computer Science graduate and aspiring AI engineer building multi-agent LLM systems (LangChain, LangGraph, RAG) and RESTful backends in Java / Spring Boot and C# / ASP.NET Core.",
+    "Luca Repupilli is a Computer Science graduate and aspiring AI engineer building multi-agent LLM systems (LangChain, LangGraph, RAG) and RESTful backends.",
   keywords: [
     "Luca Repupilli",
     "AI engineer",
