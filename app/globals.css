@@ -264,3 +264,68 @@ footer {
 .about-flip .flip-card__face {
   border: 1px solid var(--color-line);
 }
+
+/* ---------- Easter egg: chef's menu (see app/components/ChefsMenu.js) ---------- */
+.chefs-menu {
+  width: min(34rem, calc(100% - 2rem));
+  max-height: calc(100dvh - 2rem);
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--color-line);
+  border-radius: 20px;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  box-shadow: 0 30px 80px -20px rgb(31 51 80 / 0.45);
+}
+
+.chefs-menu::backdrop {
+  background: rgb(31 51 80 / 0.55);
+  backdrop-filter: blur(3px);
+}
+
+.chefs-menu[open] {
+  animation: menu-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.chefs-menu[open]::backdrop {
+  animation: menu-fade 0.35s ease;
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+}
+
+@keyframes menu-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+/* ---------- 404 "lost in space" (see app/not-found.js) ---------- */
+@keyframes astronaut-float {
+  0%,
+  100% {
+    transform: translateY(-8px) rotate(-8deg);
+  }
+  50% {
+    transform: translateY(10px) rotate(6deg);
+  }
+}
+
+.astronaut-float {
+  animation: astronaut-float 7s ease-in-out infinite;
+  transform-origin: 50% 50%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chefs-menu[open],
+  .chefs-menu[open]::backdrop,
+  .astronaut-float {
+    animation: none;
+  }
+}

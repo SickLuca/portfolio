@@ -1,4 +1,7 @@
 // Data-driven "Experience" section (timeline: period left, details right).
+// `easterEgg: true` adds the "Hungry?" button that opens the chef's menu.
+import ChefsMenu from "./ChefsMenu";
+
 const jobs = [
   {
     role: "Software Engineering Intern",
@@ -16,6 +19,7 @@ const jobs = [
     org: "Albergo Ristorante Apollo 17",
     location: "Corridonia, Italy",
     period: "Oct 2017 - Jan 2026",
+    easterEgg: true,
     bullets: [
       "Coordinated and led the dining-room staff while working full-time and later part-time throughout my studies.",
       "Developed strong teamwork, organization, and customer-facing communication skills under pressure.",
@@ -44,6 +48,7 @@ function Entry({ job }) {
             </li>
           ))}
         </ul>
+        {job.easterEgg && <ChefsMenu />}
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { faqs } from "./faqData";
+import TabTitle from "./components/TabTitle";
 import "./globals.css";
 
 const inter = Inter({
@@ -280,6 +281,7 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
+        <TabTitle />
         <SpeedInsights />
         <Analytics />
       </body>
