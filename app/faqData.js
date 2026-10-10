@@ -7,7 +7,7 @@
 export const faqs = [
   {
     q: "Who is Luca Repupilli?",
-    a: "Luca Repupilli is a Computer Science graduate (BSc, University of Camerino, 102/110) and aspiring AI engineer based in Macerata, Italy. He builds multi-agent LLM systems and RESTful backends, and is open to relocation.",
+    a: "Luca Repupilli is a Computer Science graduate (BSc, University of Camerino, 102/110), now pursuing an MSc in Artificial Intelligence, and aspiring AI engineer based in Macerata, Italy. He builds multi-agent LLM systems and RESTful backends, and is open to relocation.",
   },
   {
     q: "What does he focus on?",
@@ -23,7 +23,7 @@ export const faqs = [
   },
   {
     q: "Is he available for hire?",
-    a: "Yes. He recently graduated and is looking for a role in AI and software engineering, and he is open to relocation.",
+    a: "Yes. He graduated in Computer Science and, while pursuing an MSc in Artificial Intelligence, is looking for a role in AI and software engineering. He is open to relocation.",
   },
   {
     q: "How can you get in touch?",

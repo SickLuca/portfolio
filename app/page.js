@@ -6,34 +6,70 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 import About from "./components/About";
 import Faq from "./components/Faq";
-import Contact from "./components/Contact";
+import Contact, { ContactSky } from "./components/Contact";
 import Footer from "./components/Footer";
 import BackToTop from "./components/BackToTop";
 import Reveal from "./components/Reveal";
+import SheetStack from "./components/SheetStack";
 
 export default function Home() {
   return (
     <>
       <Nav />
       <main>
-        <Hero />
-        <Projects />
-        <Stack />
-        <Reveal>
-          <Experience />
-        </Reveal>
-        <Reveal>
-          <Education />
-        </Reveal>
-        <Reveal>
-          <About />
-        </Reveal>
-        <Faq />
-        <Reveal>
-          <Contact />
-        </Reveal>
+        {/* The nav-level sections slide up over each other (see SheetStack):
+            Work, Stack, Experience (+ Education), About (+ FAQ), Contact
+            (+ the footer, at the bottom of the navy Contact sheet). */}
+        <SheetStack
+          sections={[
+            {
+              node: (
+                <>
+                  <Hero />
+                  <Projects />
+                </>
+              ),
+            },
+            { node: <Stack />, className: "bg-navy" },
+            {
+              node: (
+                <>
+                  <Reveal>
+                    <Experience />
+                  </Reveal>
+                  <Reveal>
+                    <Education />
+                  </Reveal>
+                </>
+              ),
+              className: "bg-bg",
+            },
+            {
+              node: (
+                <>
+                  <Reveal>
+                    <About />
+                  </Reveal>
+                  <Faq />
+                </>
+              ),
+              className: "bg-bg",
+            },
+            {
+              node: (
+                <div className="relative overflow-hidden">
+                  <ContactSky />
+                  <Reveal>
+                    <Contact />
+                  </Reveal>
+                  <Footer />
+                </div>
+              ),
+              className: "bg-navy",
+            },
+          ]}
+        />
       </main>
-      <Footer />
       <BackToTop />
     </>
   );

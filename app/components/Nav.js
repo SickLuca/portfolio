@@ -98,7 +98,7 @@ export default function Nav() {
             href="/Luca_Repupilli_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-navy/20 px-4 py-1.5 text-sm font-medium text-navy transition-colors hover:bg-navy hover:text-white"
+            className="rounded-full border border-navy bg-navy px-4 py-1.5 text-sm font-medium text-white transition-colors hover:border-accent-strong hover:bg-accent-strong"
           >
             Download CV
           </a>
@@ -155,7 +155,7 @@ export default function Nav() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setOpen(false)}
-              className="mt-2 inline-flex w-fit rounded-full border border-navy/20 px-4 py-1.5 text-sm font-medium text-navy"
+              className="mt-2 inline-flex w-fit rounded-full border border-navy bg-navy px-4 py-1.5 text-sm font-medium text-white transition-colors hover:border-accent-strong hover:bg-accent-strong"
             >
               Download CV
             </a>

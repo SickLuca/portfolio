@@ -1,9 +1,22 @@
 // Data-driven "Education" section (same timeline layout as Experience).
+// An entry with `progress` also shows a circular progress ring on the right.
+import ProgressRing from "./ProgressRing";
+
 const education = [
+  {
+    degree: "MSc in Computer Science - Artificial Intelligence (taught in English)",
+    org: "University of Camerino (UNICAM)",
+    period: "Oct 2026 - present",
+    note: "In progress",
+    bullets: [
+      "Current courses: complex systems design, machine learning, multiagent systems lab, distributed calculus and coordination.",
+    ],
+    progress: { value: 25, label: "Degree progress" },
+  },
   {
     degree: "BSc in Computer Science",
     org: "University of Camerino (UNICAM)",
-    period: "Graduated Jul 2026",
+    period: "Oct 2021 - Jul 2026",
     note: "Grade: 102/110",
     bullets: [
       "Core coursework: algorithms & data structures, software engineering (Java, Spring Boot), advanced programming paradigms (C# / ASP.NET Core), databases (SQL), operating systems, computer networks & security, languages & compilers, probability & statistics.",
@@ -25,23 +38,30 @@ function Entry({ item }) {
       <div className="font-mono text-xs uppercase tracking-[0.14em] text-muted md:pt-1.5">
         {item.period}
       </div>
-      <div>
-        <h3 className="font-display text-xl font-semibold tracking-tight text-navy md:text-2xl">
-          {item.degree}
-        </h3>
-        <p className="mt-1 text-sm text-accent">
-          {item.org}
-          {item.note ? ` · ${item.note}` : ""}
-        </p>
-        {item.bullets.length > 0 && (
-          <ul className="mt-4 space-y-3">
-            {item.bullets.map((b, i) => (
-              <li key={i} className="flex gap-3 text-base leading-relaxed text-ink/80">
-                <span className="mt-2.5 h-px w-3 shrink-0 bg-accent/70" aria-hidden="true" />
-                <span>{b}</span>
-              </li>
-            ))}
-          </ul>
+      <div className="flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
+        <div className="min-w-0 flex-1">
+          <h3 className="font-display text-xl font-semibold tracking-tight text-navy md:text-2xl">
+            {item.degree}
+          </h3>
+          <p className="mt-1 text-sm text-accent">
+            {item.org}
+            {item.note ? ` · ${item.note}` : ""}
+          </p>
+          {item.bullets.length > 0 && (
+            <ul className="mt-4 space-y-3">
+              {item.bullets.map((b, i) => (
+                <li key={i} className="flex gap-3 text-base leading-relaxed text-ink/80">
+                  <span className="mt-2.5 h-px w-3 shrink-0 bg-accent/70" aria-hidden="true" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        {item.progress && (
+          <div className="shrink-0">
+            <ProgressRing value={item.progress.value} label={item.progress.label} />
+          </div>
         )}
       </div>
     </div>

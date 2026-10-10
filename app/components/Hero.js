@@ -38,8 +38,9 @@ export default function Hero() {
             Repupilli
           </h1>
           <p className="mt-6 max-w-2xl text-[20px] leading-relaxed text-ink/80 md:text-[22px]">
-            Computer Science graduate and aspiring AI engineer, aiming to
-            specialize in AI &amp; agentic systems. Hands-on experience building
+            Computer Science graduate and aspiring AI engineer, now pursuing an
+            MSc in Artificial Intelligence to specialize in AI &amp; agentic
+            systems. Hands-on experience building
             multi-agent LLM applications that combine tool-execution pipelines with
             Retrieval-Augmented Generation (RAG), and designing RESTful backends in
             Java / Spring Boot and C# / ASP.NET Core. Shipped a conversational

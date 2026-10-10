@@ -2,7 +2,6 @@ import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
 import { faqs } from "./faqData";
-import TabTitle from "./components/TabTitle";
 import "./globals.css";
 
 const inter = Inter({
@@ -182,7 +181,7 @@ const jsonLd = {
       familyName: "Repupilli",
       jobTitle: "Software Engineer",
       description:
-        "Computer Science graduate and aspiring AI engineer building multi-agent LLM systems (LangChain, LangGraph, RAG) and RESTful backends in Java / Spring Boot and C# / ASP.NET Core. Open to AI and software engineering roles.",
+        "Computer Science graduate and aspiring AI engineer, now pursuing an MSc in Artificial Intelligence, building multi-agent LLM systems (LangChain, LangGraph, RAG) and RESTful backends in Java / Spring Boot and C# / ASP.NET Core. Open to AI and software engineering roles.",
       url: SITE_URL,
       mainEntityOfPage: `${SITE_URL}/#profilepage`,
       image: `${SITE_URL}/luca.png`,
@@ -281,7 +280,6 @@ export default function RootLayout({ children }) {
             __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
           }}
         />
-        <TabTitle />
         <SpeedInsights />
         <Analytics />
       </body>
