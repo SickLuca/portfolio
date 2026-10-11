@@ -94,8 +94,11 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* right: contact links */}
-          <div className="rounded-2xl border border-white/15 bg-white/[0.06] px-5 backdrop-blur-[2px] md:self-center">
+          {/* right: contact links. Kept on its own GPU layer (will-change):
+              on Chrome Android the card, translucent over the twinkling stars,
+              was sometimes drawn only down to the second row after scrolling
+              back to this section. */}
+          <div className="rounded-2xl border border-white/15 bg-white/[0.06] px-5 [will-change:transform] md:self-center">
             {links.map((link) => {
               const external = link.href.startsWith("http");
               return (

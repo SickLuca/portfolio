@@ -306,7 +306,20 @@ const Topography = ({
     let isPageVisible = !document.hidden;
     const t0 = performance.now();
 
+    // Touch screens: skip drawing while the page scrolls (and briefly after),
+    // so the GPU is free for the scroll and the sheet transitions.
+    let scrollHold = 0;
+    const touch = window.matchMedia("(pointer: coarse)").matches;
+    const onScroll = () => {
+      scrollHold = performance.now() + 200;
+    };
+    if (touch) window.addEventListener("scroll", onScroll, { passive: true });
+
     const loop = (t) => {
+      if (t < scrollHold) {
+        raf = requestAnimationFrame(loop);
+        return;
+      }
       const time = (t - t0) * 0.001;
       const u = program.uniforms;
       u.iTime.value = time;
@@ -367,6 +380,7 @@ const Topography = ({
       tryStop();
       ro.disconnect();
       io.disconnect();
+      window.removeEventListener("scroll", onScroll);
       document.removeEventListener("visibilitychange", onVisibility);
       canvas.removeEventListener("mousemove", onMouseMove);
       canvas.removeEventListener("mouseleave", onMouseLeave);

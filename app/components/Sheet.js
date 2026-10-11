@@ -15,7 +15,10 @@ export default function Sheet({ className = "", children }) {
   const ref = useRef(null);
   const reduce = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "start start"] });
+  // No clip at all once the sheet is fully in: a leftover clip-path on a
+  // section this tall keeps the browser masking it on every frame.
   const clipPath = useTransform(scrollYProgress, (p) => {
+    if (p >= 1) return "none";
     const r = RADIUS * (1 - p);
     return `inset(0 ${INSET * (1 - p)}% round ${r}px ${r}px 0 0)`;
   });

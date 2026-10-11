@@ -51,7 +51,6 @@ body {
 .constellation-star {
   animation: twinkle var(--tw-dur, 4s) ease-in-out infinite;
   animation-delay: var(--tw-delay, 0s);
-  will-change: opacity;
 }
 
 .constellation-drift {
@@ -62,6 +61,23 @@ body {
   .constellation-star,
   .constellation-drift {
     animation: none;
+  }
+}
+
+/* Phones: the drift moves a layer as tall as the whole section, which is too
+   much GPU work while scrolling; the stars still twinkle. */
+@media (max-width: 767px) {
+  .constellation-drift {
+    animation: none;
+  }
+}
+
+/* Touch screens: section reveals fade and rise without the blur (animating a
+   blur over a whole section is expensive on phones). Overrides the inline
+   filter set by motion (see Reveal.js). */
+@media (pointer: coarse) {
+  .reveal {
+    filter: none !important;
   }
 }
 

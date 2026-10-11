@@ -261,13 +261,21 @@ export default function TechGlobe() {
       s.dirty = false;
     };
 
-    // Frame loop, only while the globe is on screen.
+    // Frame loop, only while the globe is on screen. On touch screens the
+    // idle spin also holds still while the page is being scrolled (and for a
+    // moment after), so the phone does not redraw the globe and scroll at once.
     let raf = 0;
     let last = 0;
+    let scrollHold = 0;
+    const touch = window.matchMedia("(pointer: coarse)").matches;
+    const onScroll = () => {
+      scrollHold = performance.now() + 200;
+    };
+    if (touch) window.addEventListener("scroll", onScroll, { passive: true });
     const frame = (now) => {
       const dt = Math.min(now - (last || now), 50);
       last = now;
-      if (!s.dragging) {
+      if (!s.dragging && now > scrollHold) {
         if (reduce.matches) {
           s.vel = { x: 0, y: 0 };
         } else {
@@ -343,6 +351,7 @@ export default function TechGlobe() {
       stop();
       io.disconnect();
       ro.disconnect();
+      window.removeEventListener("scroll", onScroll);
       root.removeEventListener("pointerdown", onDown);
       root.removeEventListener("pointermove", onMove);
       root.removeEventListener("pointerup", onUp);

@@ -6,6 +6,10 @@
 // lines live in a 0-100 SVG with non-scaling strokes so they stay hairline
 // thin. Twinkle and drift reuse the .constellation-* keyframes in globals.css
 // (reduce-motion turns them off). Pure markup, no client JS.
+// Performance (mobile): only the constellation stars twinkle; the dust is one
+// static SVG, since every animated dot is its own GPU layer. The soft fade at
+// the top and bottom edges is painted with navy gradients rather than a CSS
+// mask, which would re-composite the whole animated sky on every frame.
 
 // Background dust, deterministic so server and client markup match.
 function makeDust(seed, count) {
@@ -15,6 +19,7 @@ function makeDust(seed, count) {
     x: rnd() * 100,
     y: rnd() * 100,
     r: 0.6 + rnd() * 0.8,
+    o: 0.2 + rnd() * 0.8,
   }));
 }
 
@@ -42,20 +47,21 @@ function Star({ x, y, r, i, min }) {
 // `links`: [[a, b]] pairs of star indexes traced as lines.
 export default function NightSky({ stars, links, seed = 1, dust = 90 }) {
   const specks = makeDust(seed, dust);
-  // Faded out towards the top and bottom edges of the section.
-  const fade = "linear-gradient(to bottom, transparent, #000 6%, #000 94%, transparent)";
   return (
-    <div
-      className="pointer-events-none absolute inset-0"
-      style={{ maskImage: fade, WebkitMaskImage: fade }}
-      aria-hidden="true"
-    >
+    <div className="pointer-events-none absolute inset-0" aria-hidden="true">
       <div className="constellation-drift absolute inset-0 text-white">
-        <div className="absolute inset-0 opacity-45">
+        <svg className="absolute inset-0 h-full w-full opacity-45" focusable="false">
           {specks.map((s, i) => (
-            <Star key={`d-${i}`} {...s} i={i} min={0.2} />
+            <circle
+              key={`d-${i}`}
+              cx={`${s.x}%`}
+              cy={`${s.y}%`}
+              r={s.r * 1.3}
+              fill="currentColor"
+              opacity={s.o.toFixed(2)}
+            />
           ))}
-        </div>
+        </svg>
 
         <svg
           viewBox="0 0 100 100"
@@ -97,6 +103,9 @@ export default function NightSky({ stars, links, seed = 1, dust = 90 }) {
           <Star key={`s-${i}`} {...s} i={i} min={0.4} />
         ))}
       </div>
+      {/* fade the sky out towards the top and bottom edges (navy sections) */}
+      <div className="absolute inset-x-0 top-0 h-[6%] bg-gradient-to-b from-navy to-transparent" />
+      <div className="absolute inset-x-0 bottom-0 h-[6%] bg-gradient-to-t from-navy to-transparent" />
     </div>
   );
 }

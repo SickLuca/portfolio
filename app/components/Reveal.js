@@ -21,11 +21,19 @@ export default function Reveal({
     return className ? <div className={className}>{children}</div> : children;
   }
 
+  // Only animate the filter when there is a blur, and drop it once settled:
+  // a leftover `filter: blur(0px)` still makes the browser composite the
+  // block separately, which is costly on mobile.
+  const from = blur ? { opacity: 0, y, filter: `blur(${blur}px)` } : { opacity: 0, y };
+  const to = blur
+    ? { opacity: 1, y: 0, filter: "blur(0px)", transitionEnd: { filter: "none" } }
+    : { opacity: 1, y: 0 };
+
   return (
     <motion.div
-      className={className}
-      initial={{ opacity: 0, y, filter: `blur(${blur}px)` }}
-      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      className={className ? `reveal ${className}` : "reveal"}
+      initial={from}
+      whileInView={to}
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration, ease: [0.22, 1, 0.36, 1], delay }}
     >

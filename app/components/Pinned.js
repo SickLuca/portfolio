@@ -53,9 +53,12 @@ export default function Pinned({ children }) {
 
     // The shrink and dim are written straight to the two layers (not through
     // an inherited custom property, which would restyle the whole section on
-    // every frame), and only when the value actually changes.
+    // every frame), and only when the value actually changes. The shrinking
+    // layer stays promoted (will-change), so starting / ending a cover does not
+    // make the phone re-rasterize the whole section.
     const inner = el.firstElementChild;
     const shade = el.lastElementChild;
+    if (!reduce) inner.style.willChange = "transform";
     let raf = 0;
     let last = -1;
     const update = () => {
@@ -69,7 +72,6 @@ export default function Pinned({ children }) {
       if (p === last) return;
       last = p;
       inner.style.transform = p ? `scale(${1 - p * 0.06})` : "";
-      inner.style.willChange = p > 0 && p < 1 ? "transform" : "";
       shade.style.opacity = p * 0.35;
     };
     const onScroll = () => {
