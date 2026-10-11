@@ -15,24 +15,21 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("");
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   // Scroll-spy: highlight the nav link for the section currently being read.
   // A section becomes active once its top passes an activation line ~35% down
   // the viewport. Two edge cases are handled explicitly: above the first
   // section (the hero) nothing is highlighted, and once the page is scrolled
   // to the bottom the last section wins even if it is too short to reach the
-  // line.
+  // line. Also tracks whether the page is scrolled at all (nav background).
+  // Runs at most once per frame.
   useEffect(() => {
     const ids = links.map((l) => l.href.slice(1));
 
+    let raf = 0;
     const update = () => {
+      raf = 0;
       const scrollY = window.scrollY;
+      setScrolled(scrollY > 8);
       const atBottom =
         window.innerHeight + scrollY >=
         document.documentElement.scrollHeight - 2;
@@ -52,19 +49,25 @@ export default function Nav() {
       setActive(current);
     };
 
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
     update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
     return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
   }, []);
 
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
-        scrolled ? "border-b border-line bg-bg/85 backdrop-blur" : "border-b border-transparent"
+        scrolled
+          ? "border-b border-line bg-bg/95 md:bg-bg/85 md:backdrop-blur"
+          : "border-b border-transparent"
       }`}
     >
       <nav className="wrap flex h-16 items-center justify-between">

@@ -95,7 +95,7 @@ export default function Contact() {
           </div>
 
           {/* right: contact links */}
-          <div className="rounded-2xl border border-white/15 bg-white/[0.06] px-5 backdrop-blur-[2px]">
+          <div className="rounded-2xl border border-white/15 bg-white/[0.06] px-5 backdrop-blur-[2px] md:self-center">
             {links.map((link) => {
               const external = link.href.startsWith("http");
               return (

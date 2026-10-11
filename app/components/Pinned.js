@@ -51,7 +51,13 @@ export default function Pinned({ children }) {
     };
     document.addEventListener("click", onClick);
 
+    // The shrink and dim are written straight to the two layers (not through
+    // an inherited custom property, which would restyle the whole section on
+    // every frame), and only when the value actually changes.
+    const inner = el.firstElementChild;
+    const shade = el.lastElementChild;
     let raf = 0;
+    let last = -1;
     const update = () => {
       raf = 0;
       const next = el.nextElementSibling;
@@ -59,8 +65,12 @@ export default function Pinned({ children }) {
       const nextTop = next.getBoundingClientRect().top;
       el.style.position = nextTop <= 0 ? "static" : "";
       if (reduce) return;
-      const p = Math.min(Math.max(1 - nextTop / window.innerHeight, 0), 1);
-      el.style.setProperty("--cover", p.toFixed(3));
+      const p = Math.round(Math.min(Math.max(1 - nextTop / window.innerHeight, 0), 1) * 1000) / 1000;
+      if (p === last) return;
+      last = p;
+      inner.style.transform = p ? `scale(${1 - p * 0.06})` : "";
+      inner.style.willChange = p > 0 && p < 1 ? "transform" : "";
+      shade.style.opacity = p * 0.35;
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);
@@ -78,19 +88,12 @@ export default function Pinned({ children }) {
   }, []);
 
   return (
-    <div ref={ref} className="sticky z-0" style={{ "--cover": 0 }}>
-      <div
-        style={{
-          transform: "scale(calc(1 - var(--cover) * 0.06))",
-          transformOrigin: "50% calc(100% - 50lvh)",
-        }}
-      >
-        {children}
-      </div>
+    <div ref={ref} className="sticky z-0">
+      <div style={{ transformOrigin: "50% calc(100% - 50lvh)" }}>{children}</div>
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-navy"
-        style={{ opacity: "calc(var(--cover) * 0.35)" }}
+        style={{ opacity: 0 }}
       />
     </div>
   );

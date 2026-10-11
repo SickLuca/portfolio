@@ -1,5 +1,6 @@
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
+import Stats from "./components/Stats";
 import Projects from "./components/Projects";
 import Stack from "./components/Stack";
 import Experience from "./components/Experience";
@@ -17,19 +18,15 @@ export default function Home() {
     <>
       <Nav />
       <main>
-        {/* The nav-level sections slide up over each other (see SheetStack):
-            Work, Stack, Experience (+ Education), About (+ FAQ), Contact
-            (+ the footer, at the bottom of the navy Contact sheet). */}
+        {/* The sections slide up over each other (see SheetStack): Hero,
+            the stats band, Work, Stack, Experience (+ Education), About
+            (+ FAQ), Contact (+ the footer, at the bottom of the navy Contact
+            sheet). */}
         <SheetStack
           sections={[
-            {
-              node: (
-                <>
-                  <Hero />
-                  <Projects />
-                </>
-              ),
-            },
+            { node: <Hero /> },
+            { node: <Stats />, className: "bg-navy" },
+            { node: <Projects />, className: "bg-bg" },
             { node: <Stack />, className: "bg-navy" },
             {
               node: (
