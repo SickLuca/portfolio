@@ -120,15 +120,19 @@ export default function Stats() {
   const [projects, growth, tech, langs] = stats;
   const cardIn = (i) => ({ y: 28, blur: 0, duration: 0.6, delay: i * 0.07 });
 
+  // Tablet (md to xl) uses a 4-column bento: the big card on the left half,
+  // the growth card top right and the two small cards side by side below it,
+  // equally wide. From xl the desktop 6-column bento takes over.
+
   return (
     <section aria-label="At a glance" className="relative overflow-hidden bg-navy text-white">
       <NightSky stars={SKY_STARS} links={SKY_LINKS} seed={42} dust={50} />
       <div
         ref={ref}
-        className="wrap relative z-10 grid grid-cols-2 gap-4 py-16 md:grid-cols-6 md:grid-rows-2 md:py-24"
+        className="wrap relative z-10 grid grid-cols-2 gap-4 py-16 md:grid-cols-4 md:grid-rows-2 md:py-24 xl:grid-cols-6"
       >
         {/* big white card */}
-        <Reveal {...cardIn(0)} className="col-span-2 md:col-span-3 md:row-span-2">
+        <Reveal {...cardIn(0)} className="col-span-2 md:row-span-2 xl:col-span-3">
           <div className="relative flex h-full flex-col justify-between gap-10 overflow-hidden rounded-3xl bg-surface p-7 md:p-9">
             <div
               aria-hidden="true"
@@ -157,10 +161,10 @@ export default function Stats() {
         </Reveal>
 
         {/* wide card with the growth chart */}
-        <Reveal {...cardIn(1)} className="col-span-2 md:col-span-3">
+        <Reveal {...cardIn(1)} className="col-span-2 xl:col-span-3">
           <div className="flex h-full items-center justify-between gap-4 rounded-3xl border border-white/15 bg-white/[0.06] p-6 md:p-7">
             <div>
-              <p className="whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.14em] text-white/55 md:text-xs md:tracking-[0.2em]">
+              <p className="whitespace-nowrap font-mono text-[11px] uppercase tracking-[0.14em] text-white/55 xl:text-xs xl:tracking-[0.2em]">
                 {growth.label}
               </p>
               <p className="mt-1 font-display text-3xl font-semibold tracking-tight text-white md:text-4xl">
@@ -168,11 +172,11 @@ export default function Stats() {
               </p>
               <p className="mt-1 text-xs text-white/55">{growth.text}</p>
             </div>
-            <div className="flex h-9 shrink-0 items-end gap-[3px] md:gap-1" aria-hidden="true">
+            <div className="flex h-9 shrink-0 items-end gap-[3px] xl:gap-1" aria-hidden="true">
               {BARS.map((h, i) => (
                 <div
                   key={i}
-                  className="w-1 origin-bottom rounded-full md:w-1.5 bg-white transition-transform duration-700 ease-out"
+                  className="w-1 origin-bottom rounded-full xl:w-1.5 bg-white transition-transform duration-700 ease-out"
                   style={{
                     height: `${h}%`,
                     transform: run === false ? "scaleY(0)" : "scaleY(1)",
@@ -197,8 +201,8 @@ export default function Stats() {
         </Reveal>
 
         {/* card with the round icon */}
-        <Reveal {...cardIn(3)} className="md:col-span-2">
-          <div className="flex h-full flex-col gap-3 rounded-3xl border border-white/15 bg-white/[0.06] p-4 sm:flex-row sm:items-center sm:gap-4 sm:p-5 md:p-6">
+        <Reveal {...cardIn(3)} className="xl:col-span-2">
+          <div className="flex h-full flex-col gap-3 rounded-3xl border border-white/15 bg-white/[0.06] p-4 sm:flex-row sm:items-center sm:gap-4 sm:p-5 md:flex-col md:justify-center md:gap-3 md:text-center xl:flex-row xl:justify-start xl:gap-4 xl:p-6 xl:text-left">
             <div
               aria-hidden="true"
               className="flex size-11 shrink-0 items-center justify-center rounded-full bg-white text-navy"
@@ -217,7 +221,7 @@ export default function Stats() {
               </svg>
             </div>
             <div>
-              <p className="font-display text-lg font-semibold leading-none tracking-tight text-white md:text-xl">
+              <p className="font-display text-lg font-semibold leading-none tracking-tight text-white xl:text-xl">
                 <Count stat={langs} run={run} /> {langs.label}
               </p>
               <p className="mt-1.5 text-xs text-white/55">{langs.text}</p>

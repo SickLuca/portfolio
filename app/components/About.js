@@ -72,11 +72,13 @@ function FaceFooter({ dark, hint, credit }) {
 
 // A single face: optional cover image + navy scrim, then the content. With an
 // image the content sits at the bottom (over the strongest part of the scrim);
-// without one it is vertically centered like the original card.
+// without one it is vertically centered like the original card. Tablet (md to
+// xl) keeps the mobile padding and type sizes: the card column is too narrow
+// there for the desktop ones.
 function Face({ image, children }) {
   return (
     <div
-      className={`relative flex h-full w-full flex-col p-6 md:p-10 ${
+      className={`relative flex h-full w-full flex-col p-6 xl:p-10 ${
         image ? "justify-end" : "justify-center"
       }`}
     >
@@ -96,7 +98,7 @@ export default function About() {
   const front = (
     <Face image={frontImage}>
       <p
-        className={`font-display text-2xl font-semibold md:text-3xl ${
+        className={`font-display text-2xl font-semibold xl:text-3xl ${
           frontImage ? "text-white" : "text-navy"
         }`}
       >
@@ -117,7 +119,7 @@ export default function About() {
   const back = (
     <Face image={backImage}>
       <p
-        className={`font-display text-xl font-semibold leading-snug md:text-2xl ${
+        className={`font-display text-xl font-semibold leading-snug xl:text-2xl ${
           backImage ? "text-white" : "text-navy"
         }`}
       >
@@ -145,7 +147,7 @@ export default function About() {
           Curious, critical, always growing
         </h2>
 
-        <div className="mt-8 grid gap-10 md:grid-cols-[1.4fr_1fr] md:items-center md:gap-16">
+        <div className="mt-8 grid gap-10 md:grid-cols-2 md:items-center xl:grid-cols-[1.4fr_1fr] xl:gap-16">
           <div className="space-y-5 text-lg leading-relaxed text-ink/80">
             {paragraphs.map((p, i) => (
               <p key={i}>{p}</p>

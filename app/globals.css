@@ -242,10 +242,10 @@ footer {
 .about-flip.flip-card {
   display: block;
   width: 100%;
-  height: 28rem; /* mobile: the front text wraps more, so it needs more room */
+  height: 28rem; /* mobile + tablet: the front text wraps more, so it needs more room */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .about-flip.flip-card {
     height: 25rem; /* desktop: ~matches the height of the left text column */
   }

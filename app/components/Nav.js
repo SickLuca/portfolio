@@ -73,13 +73,14 @@ export default function Nav() {
       <nav className="wrap flex h-16 items-center justify-between">
         <a
           href="#top"
-          className="font-mono text-sm font-medium tracking-tight text-navy"
+          className="font-mono text-sm font-medium tracking-tight text-navy md:text-[0.8rem] lg:text-sm"
         >
           lucarepupilli.com
         </a>
 
-        {/* desktop links */}
-        <div className="hidden items-center gap-8 md:flex">
+        {/* desktop links (tablet, md to lg: smaller text and gaps so the
+            row fits next to the logo and "Download CV" stays on one line) */}
+        <div className="hidden items-center gap-4 md:flex lg:gap-8">
           {links.map((l) => {
             const isActive = active === l.href.slice(1);
             return (
@@ -87,7 +88,7 @@ export default function Nav() {
                 key={l.href}
                 href={l.href}
                 aria-current={isActive ? "true" : undefined}
-                className={`text-sm transition-colors ${
+                className={`text-[0.8rem] transition-colors lg:text-sm ${
                   isActive
                     ? "font-medium text-accent"
                     : "text-ink/80 hover:text-accent"
@@ -101,7 +102,7 @@ export default function Nav() {
             href="/Luca_Repupilli_CV.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="rounded-full border border-navy bg-navy px-4 py-1.5 text-sm font-medium text-white transition-colors hover:border-accent-strong hover:bg-accent-strong"
+            className="whitespace-nowrap rounded-full border border-navy bg-navy px-3.5 py-1.5 text-[0.8rem] font-medium text-white transition-colors hover:border-accent-strong hover:bg-accent-strong lg:px-4 lg:text-sm"
           >
             Download CV
           </a>
