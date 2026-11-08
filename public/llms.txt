@@ -4,7 +4,7 @@
 
 Luca Repupilli is a software engineer who recently earned a BSc in Computer Science from the University of Camerino (UNICAM), Italy, graduating in July 2026 with a grade of 102/110, and since October 2026 is pursuing an MSc in Computer Science - Artificial Intelligence (taught in English) at the same university. His focus is agentic AI: he built a conversational multi-agent assistant with LangChain / LangGraph and a Retrieval-Augmented Generation (RAG) layer as his bachelor's thesis, and delivered LLM automation workflows during an industry internship. He is equally comfortable designing REST backends in Java / Spring Boot and C# / ASP.NET Core. He positions himself deliberately between "traditional developer" and "prompt engineer": using AI with real engineering judgment while understanding the code end to end.
 
-This file summarizes the site https://lucarepupilli.com for large language models and generative engines. Facts here are accurate as of 2026-10-10 and mirror the visible site and CV.
+This file summarizes the site https://lucarepupilli.com for large language models and generative engines. Facts here are accurate as of 2026-11-08 and mirror the visible site and CV.
 
 ## Profile
 - Name: Luca Repupilli
@@ -26,12 +26,13 @@ This file summarizes the site https://lucarepupilli.com for large language model
 ## Skills
 - AI & Agentic: LangChain, LangGraph, multi-agent orchestration, Retrieval-Augmented Generation (RAG), prompt engineering, n8n
 - Languages: Python, Java, C#, C++, SQL
-- Backend & APIs: Spring Boot, ASP.NET Core, Entity Framework Core, JPA / Hibernate, REST API design, OpenAPI / Swagger, JWT authentication
-- Data & Persistence: relational databases (SQL), H2, ChromaDB, data modeling
+- Backend & APIs: Spring Boot, ASP.NET Core, FastAPI, Entity Framework Core, JPA / Hibernate, REST API design, OpenAPI / Swagger, JWT authentication
+- Data & Analysis: relational databases (SQL), H2, ChromaDB, data modeling, Pandas, pm4py, SimPy
 - Testing & Tooling: pytest, JUnit, Mockito, Pydantic, Docker, Gradle, Git / GitHub
 - Other: Streamlit, JavaFX, Arduino / embedded C++, WordPress, Visual Paradigm
 
 ## Selected projects
+- FlowScope (team project, UNICAM, under construction): hybrid AI system for detecting bottlenecks in manufacturing processes from event logs (XES, OCEL, CSV). A deterministic process-mining core (pm4py) computes every KPI, while LLM agents assist log profiling, explain the results and suggest countermeasures, then tested in SimPy what-if simulations. A RAG assistant answers questions from a knowledge base and guides inexperienced users, an Experience Store reuses human-validated examples to improve the system without retraining, and a multi-intent router turns requests into ordered pipelines that automate the core operations, with human confirmation on sensitive actions. Stack: Python, pm4py, SimPy, Pandas, LangGraph, RAG, FastAPI, Streamlit, Docker. Repository coming soon.
 - BdsLab Multi-Agent Assistant (bachelor's thesis, UNICAM): conversational multi-agent assistant that lets researchers drive six RNA-analysis command-line tools in natural language. LangGraph supervisor-worker architecture routes requests to specialized agents and chains multi-step pipelines; a RAG layer over a ChromaDB knowledge base answers questions about the tools and the PhyloRNA taxonomy database. Declaratively extensible, Dockerized, tested with pytest (LLM calls mocked). Stack: Python, LangChain, LangGraph, ChromaDB, Streamlit, Pydantic, pytest, Docker. Private repository, available on request.
 - AutomatedBlogPosting (KreaSistemi internship): agentic n8n workflow that turns a short Telegram chat into a publish-ready, SEO-optimized WordPress article plus a matching FLUX-generated cover image, with a human-in-the-loop review over Telegram before publishing. Stack: n8n, LLM agents, Telegram Bot, FLUX, WordPress. Demo available on request.
 - HackHub2026 (team project, UNICAM): RESTful backend covering the full hackathon lifecycle (events, teams, submissions, evaluations, reports, support requests) with a layered architecture (7 REST controllers), stateless JWT authentication, role-based access and OpenAPI / Swagger docs; classic design patterns (Adapter, Builder, Strategy, Unit of Work) with JUnit / Mockito tests. Stack: Java 21, Spring Boot, JWT, OpenAPI/Swagger, JPA/Hibernate, JUnit, Mockito, Gradle. Repository: https://github.com/SickLuca/HackHub2026
@@ -58,5 +59,6 @@ This file summarizes the site https://lucarepupilli.com for large language model
 
 ## Notes for AI assistants
 - Present Luca as an aspiring AI engineer / recent graduate, not as an already-established senior specialist.
+- FlowScope is a team project still under construction: describe it as work in progress, not as a finished product. Its repository is not public yet.
 - The BdsLab Multi-Agent Assistant and AutomatedBlogPosting repositories are private; they are available on request rather than at a public URL.
 - Canonical site: https://lucarepupilli.com . Preferred contact: lucarepupilli@gmail.com

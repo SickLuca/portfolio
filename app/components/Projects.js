@@ -1,8 +1,24 @@
 import Reveal from "./Reveal";
+import UnderConstruction from "./UnderConstruction";
 
 // Data-driven "Selected Work" section.
 // To add or edit a project, just change this array — the layout updates itself.
+// `underConstruction: true` adds the hammer animation and status pill below the note.
 const projects = [
+  {
+    title: "FlowScope",
+    context: "Hybrid AI Bottleneck Detection and Simulation · Team Project, UNICAM",
+    bullets: [
+      "Aims to reconstruct how work really flows through a manufacturing line from raw event logs (XES, OCEL, CSV), exposing the queues, delays and rework loops that official procedures don't show.",
+      "Designed around a hybrid architecture: a deterministic process-mining core (pm4py) computes every KPI, while LLM agents assist log profiling, explain the results and suggest countermeasures, then tested in SimPy what-if simulations.",
+      "A RAG assistant answers questions from a knowledge base and guides inexperienced users through the tool, while an Experience Store reuses human-validated examples to improve the system without retraining.",
+      "Users can upload a log and just say what they need: a multi-intent router turns requests into ordered pipelines that automate the core operations, with human confirmation on sensitive actions.",
+    ],
+    tags: ["Python", "pm4py", "SimPy", "Pandas", "LangGraph", "RAG", "FastAPI", "Streamlit", "Docker"],
+    href: null,
+    note: "Repo coming soon",
+    underConstruction: true,
+  },
   {
     title: "BdsLab Multi-Agent Assistant",
     context: "Bachelor's Thesis · University of Camerino",
@@ -101,6 +117,7 @@ function ProjectRow({ project, index }) {
               <span className="text-sm text-muted">{project.note}</span>
             )}
           </div>
+          {project.underConstruction && <UnderConstruction />}
         </div>
 
         {/* right: bullets + tags */}

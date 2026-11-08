@@ -25,6 +25,7 @@ const groups = [
     items: [
       "Spring Boot",
       "ASP.NET Core",
+      "FastAPI",
       "Entity Framework Core",
       "JPA / Hibernate",
       "REST API design",
@@ -33,8 +34,16 @@ const groups = [
     ],
   },
   {
-    label: "Data & Persistence",
-    items: ["Relational databases (SQL)", "H2", "ChromaDB", "Data modeling"],
+    label: "Data & Analysis",
+    items: [
+      "Relational databases (SQL)",
+      "H2",
+      "ChromaDB",
+      "Data modeling",
+      "Pandas",
+      "pm4py",
+      "SimPy",
+    ],
   },
   {
     label: "Testing & Tooling",

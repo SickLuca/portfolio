@@ -83,6 +83,15 @@ const WEBSITE_ID = `${SITE_URL}/#website`;
 const works = [
   {
     type: "SoftwareSourceCode",
+    name: "FlowScope",
+    description:
+      "Team project in progress at the University of Camerino: a hybrid AI system that detects bottlenecks in manufacturing processes from event logs, pairing a deterministic process-mining core (pm4py) with LLM agents, RAG and SimPy what-if simulation.",
+    programmingLanguage: "Python",
+    keywords: "process mining, bottleneck detection, pm4py, SimPy, LangGraph, RAG, LLM agents, FastAPI, Streamlit, Docker",
+    creativeWorkStatus: "In progress",
+  },
+  {
+    type: "SoftwareSourceCode",
     name: "BdsLab Multi-Agent Assistant",
     description:
       "Conversational multi-agent assistant (bachelor's thesis) that drives six RNA-analysis command-line tools through natural language, with a LangGraph supervisor-worker architecture and a RAG layer over a ChromaDB documentation knowledge base.",
@@ -140,6 +149,7 @@ const workNodes = works.map((w) => ({
   description: w.description,
   ...(w.programmingLanguage ? { programmingLanguage: w.programmingLanguage } : {}),
   ...(w.codeRepository ? { codeRepository: w.codeRepository, url: w.codeRepository } : {}),
+  ...(w.creativeWorkStatus ? { creativeWorkStatus: w.creativeWorkStatus } : {}),
   keywords: w.keywords,
   author: { "@id": PERSON_ID },
   creator: { "@id": PERSON_ID },
@@ -248,6 +258,10 @@ const jsonLd = {
         "C++",
         "SQL",
         "Docker",
+        "FastAPI",
+        "Pandas",
+        "pm4py",
+        "SimPy",
       ],
     },
     ...workNodes,

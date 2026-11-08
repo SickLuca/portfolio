@@ -24,7 +24,7 @@ const stats = [
     label: "Personal growth",
     text: "Last 12 months · peer review pending",
   },
-  { value: 24, suffix: "+", label: "Technologies in my stack" },
+  { value: 28, suffix: "+", label: "Technologies in my stack" },
   { value: 4, label: "main languages", text: "Python, Java, C#, C++" },
 ];
 

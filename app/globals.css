@@ -312,10 +312,101 @@ footer {
   transform-origin: 50% 50%;
 }
 
+/* ---------- "Under construction" hammer (see UnderConstruction.js) ---------- */
+@keyframes forge-hammer {
+  0% {
+    transform: rotate(20deg);
+    animation-timing-function: ease-in-out;
+  }
+  40% {
+    transform: rotate(24deg);
+    animation-timing-function: cubic-bezier(0.6, 0, 1, 0.7);
+  }
+  58% {
+    transform: rotate(0deg);
+    animation-timing-function: ease-out;
+  }
+  66% {
+    transform: rotate(5deg);
+    animation-timing-function: ease-in;
+  }
+  72% {
+    transform: rotate(1deg);
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: rotate(20deg);
+  }
+}
+
+@keyframes forge-anvil {
+  0%,
+  57%,
+  70%,
+  100% {
+    transform: none;
+  }
+  60% {
+    transform: translateY(1.2px);
+  }
+}
+
+@keyframes forge-heat {
+  0%,
+  56% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes forge-spark {
+  0%,
+  57% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  60% {
+    opacity: 1;
+  }
+  84%,
+  100% {
+    opacity: 0;
+    transform: translate(var(--spark-x), var(--spark-y));
+  }
+}
+
+.forge-hammer {
+  transform-origin: 140px 35px;
+  animation: forge-hammer 1.2s infinite;
+}
+
+.forge-anvil {
+  animation: forge-anvil 1.2s linear infinite;
+}
+
+.forge-heat {
+  opacity: 0;
+  animation: forge-heat 1.2s linear infinite;
+}
+
+.forge-spark {
+  opacity: 0;
+  animation: forge-spark 1.2s ease-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .chefs-menu[open],
   .chefs-menu[open]::backdrop,
-  .astronaut-float {
+  .astronaut-float,
+  .forge-hammer,
+  .forge-anvil,
+  .forge-heat,
+  .forge-spark {
     animation: none;
   }
 }
